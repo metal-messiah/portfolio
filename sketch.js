@@ -167,7 +167,7 @@ draw = () => {
 		star.draw();
 	});
 
-	if (random() < 0.001) {
+	if (random() < 0.002) {
 		console.log('create shooting star');
 		shootingStars.push(new ShootingStar());
 	}
