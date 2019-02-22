@@ -34,7 +34,7 @@ class CenterGraphic {
 
 	draw() {
 		push();
-		translate(-width / 2, -height / 2);
+		// translate(-width / 2, -height / 2);
 		textFont(font);
 		textSize(this.size);
 		textAlign(CENTER, CENTER);

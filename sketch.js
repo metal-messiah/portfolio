@@ -2,6 +2,7 @@ let canvas;
 let font;
 let fa;
 let headshot;
+let planet;
 
 let perspective = {
 	x: 0,
@@ -77,22 +78,24 @@ preload = () => {
 	// fa = 'FontAwesome';
 
 	headshot = loadImage('./assets/headshot.JPG');
-	console.log(headshot);
+
+	planet = loadImage('./assets/planet.png');
+	console.log(planet);
 };
 
 setup = () => {
-	canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+	canvas = createCanvas(windowWidth, windowHeight);
 	console.log(canvas);
 
-	translate(-width / 2, -height / 2);
+	// translate(-width / 2, -height / 2);
 
 	perspective.z = PI / 8;
 
 	orb = new Sphere(width / 2, height / 2, 0);
 	// centerGraphic = new CenterGraphic();
 
-	for (let i = 0; i < 100; i++) {
-		stars.push(new Star());
+	for (let i = 0; i < 200; i++) {
+		stars.push(new Star(random(0, width), random(0, height)));
 	}
 
 	shootingStars.push(new ShootingStar());
@@ -155,19 +158,32 @@ draw = () => {
 	let locX = mouseX - height / 2;
 	let locY = mouseY - width / 2;
 
-	pointLight(255, 255, 255, width, height, 100);
+	// pointLight(255, 255, 255, width, height, 100);
 
 	if (shouldAnimate.frames) {
 		shouldAnimate.smoothAnimations();
 	}
 
-	orb.draw();
+	stars.forEach((star, i) => {
+		if (star.pos.x < 0 || star.pos.y > height) {
+			if (star.pos.y > height) {
+				console.log('create new star');
+				// make sure its off the screen (+5)
+				stars.push(new Star(random(0, width), -5));
+			} else {
+				console.log('create new star');
+				// make sure its off the screen (+5)
+				stars.push(new Star(width + 5, random(0, height)));
+			}
 
-	stars.forEach((star) => {
-		star.draw();
+			star.destroy();
+		} else {
+			star.update();
+			star.draw();
+		}
 	});
 
-	if (random() < 0.002) {
+	if (random() < 0.004) {
 		console.log('create shooting star');
 		shootingStars.push(new ShootingStar());
 	}
@@ -189,24 +205,28 @@ draw = () => {
 		}
 	});
 
-	// centerGraphic.draw();
+	const mi1 = menuItems.findIndex((m) => m.index === 0);
+	const mi2 = menuItems.findIndex((m) => m.index === 1);
+	const mi3 = menuItems.findIndex((m) => m.index === 2);
+	const mi4 = menuItems.findIndex((m) => m.index === 3);
 
-	menuItems.forEach((item) => {
-		item.draw();
-	});
+	// item 3 needs to draw on top
+	menuItems[mi4].draw();
+	menuItems[mi1].draw();
+	menuItems[mi2].draw();
+	orb.draw();
+	menuItems[mi3].draw();
 
 	socialLinks.forEach((sl) => {
 		sl.draw();
 	});
-
-	push();
 
 	let spacer = 30;
 	let subspacer = 20;
 	let topY = 25;
 
 	fill('orange');
-	translate(-width / 2, -height / 2);
+	// translate(-width / 2, -height / 2);
 	textFont(font);
 	textSize(title);
 	textAlign(LEFT, CENTER);
@@ -276,8 +296,6 @@ draw = () => {
 	text('• MongoDB', leftX + 5, topY);
 	topY += subspacer;
 
-	pop();
-
 	// push();
 	// texture(image);
 	// translate(width - 25, 50);
@@ -297,17 +315,23 @@ mousePressed = (evt) => {
 	}
 
 	menuItems.forEach((item) => {
-		if (item.intersectsGeom(mouseX, mouseY)) {
-			window.open(item.url, '_blank');
+		if (item.index !== 3) {
+			if (item.intersectsGeom(mouseX, mouseY)) {
+				window.open(item.url, '_blank');
+			}
 		}
 	});
 };
 
 mouseMoved = (evt) => {
-	if (orb.intersectsGeom(mouseX, mouseY, true)) {
-		cursor('pointer');
-	} else {
-		cursor('default');
+	try {
+		if (orb.intersectsGeom(mouseX, mouseY, true)) {
+			cursor('pointer');
+		} else {
+			cursor('default');
+		}
+	} catch (err) {
+		// orb is still loading
 	}
 
 	menuItems.forEach((item, i) => {

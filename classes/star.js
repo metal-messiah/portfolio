@@ -1,28 +1,39 @@
 class Star {
-	constructor() {
-		this.pos = createVector(random(0, width), random(0, height));
-		this.radius = random(1, 3);
+	constructor(x, y) {
+		this.radius = random(0.1, 3);
+		this.movementSpeed = this.radius > 2 ? this.radius * -0.03 : this.radius * -0.02;
+
+		this.pos = createVector(x, y);
+		this.vel = createVector(this.movementSpeed, 0.1);
+		this.acc = createVector(0, 0);
+
 		this.pulseRadius = this.radius + 1.5;
 		this.smoothRadius = this.radius;
 		this.isLerping = false;
 		this.c = random([ 'white', 'lightyellow', 'gray' ]);
+
+		this.id = random();
+	}
+
+	destroy() {
+		let idx = stars.findIndex((s) => s.id === this.id);
+		stars.splice(idx, 1);
+	}
+
+	applyForce(f) {
+		this.acc.add(f);
+	}
+
+	update() {
+		this.vel.add(this.acc);
+		this.pos.add(this.vel);
+		this.acc.mult(0);
 	}
 
 	draw() {
 		push();
-		translate(-width / 2, -height / 2);
 		fill(this.c);
 		noStroke();
-
-		// if (random() < 0.001 || this.isLerping) {
-		// 	this.isLerping = true;
-		// 	this.smoothRadius = lerp(this.smoothRadius, this.pulseRadius, 0.01);
-		// 	if (this.pulseRadius - this.smoothRadius < 0.1) {
-		// 		this.isLerping = false;
-		// 		this.smoothRadius = this.radius;
-		// 	}
-		// }
-		// ellipse(this.pos.x, this.pos.y, this.smoothRadius);
 
 		ellipse(this.pos.x, this.pos.y, this.radius);
 		pop();

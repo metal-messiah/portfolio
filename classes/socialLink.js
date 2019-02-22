@@ -7,7 +7,7 @@ class SocialLink {
 	draw() {
 		push();
 		fill('orange');
-		translate(-width / 2, -height / 2);
+		// translate(-width / 2, -height / 2);
 		textFont(fa);
 		textSize(title);
 		textAlign(CENTER, CENTER);

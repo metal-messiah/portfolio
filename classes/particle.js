@@ -15,7 +15,7 @@ class Particle {
 	}
 
 	decay() {
-		this.a -= 2;
+		this.a -= 3;
 	}
 
 	applyForce(f) {
@@ -30,7 +30,7 @@ class Particle {
 
 	draw() {
 		push();
-		translate(-width / 2, -height / 2);
+		// translate(-width / 2, -height / 2);
 		fill(color(255, 255, 255, this.a));
 		noStroke();
 		ellipse(this.pos.x, this.pos.y, 2);

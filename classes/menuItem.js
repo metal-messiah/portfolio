@@ -62,7 +62,7 @@ class MenuItem {
 
 	draw() {
 		push();
-		translate(-width / 2, -height / 2);
+		// translate(-width / 2, -height / 2);
 
 		if (this.highlighted) {
 			fill('orange');
@@ -81,8 +81,6 @@ class MenuItem {
 		textAlign(CENTER, CENTER);
 
 		if (this.nextLocation) {
-			// console.log('old: ', this.pos, 'new: ', this.nextLocation);
-
 			const lerpx = lerp(this.pos.x, this.nextLocation.x, 0.05);
 			const lerpy = lerp(this.pos.y, this.nextLocation.y, 0.05);
 
@@ -90,7 +88,6 @@ class MenuItem {
 			this.pos.y = lerpy;
 
 			if (abs(this.pos.x - this.nextLocation.x) < 1 && abs(this.pos.y - this.nextLocation.y) < 1) {
-				console.log(`index ${this.index} arrived!`, this.pos);
 				this.nextLocation = null;
 			}
 		}

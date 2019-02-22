@@ -4,13 +4,17 @@ class Sphere {
 		this.radius = 75;
 		this.highlighted = false;
 		this.label = 'Rotate';
+
+		this.rotation = 0;
+
+		console.log(this.pos);
 	}
 
 	intersectsGeom(x, y, highlight) {
-		if (x < this.pos.x + this.radius - 10) {
-			if (x > this.pos.x - this.radius + 10) {
-				if (y < this.pos.y + this.radius - 10) {
-					if (y > this.pos.y - this.radius + 10) {
+		if (x < this.pos.x + this.radius - 15) {
+			if (x > this.pos.x - this.radius + 15) {
+				if (y < this.pos.y + this.radius - 15) {
+					if (y > this.pos.y - this.radius + 15) {
 						if (highlight) this.highlighted = true;
 						return true;
 					}
@@ -22,59 +26,23 @@ class Sphere {
 	}
 
 	draw() {
+		this.rotation += 0.001;
 		push();
+		translate(width / 2, height / 2);
+		rotate(this.rotation);
+		if (this.highlighted) {
+			fill(color(255, 165, 0, 100));
 
-		try {
-			normalMaterial();
+			ellipse(0, 0, this.radius * 2 + 10);
+			noStroke();
+			textSize(16);
+			textFont(font);
+			textAlign(CENTER, CENTER);
 
-			// Orange point light on the right
-			pointLight(150, 100, 0, 500, 0, 200);
-
-			// Blue directional light from the left
-			directionalLight(0, 102, 255, -1, 0, 0);
-
-			if (this.highlighted) {
-				// Red spotlight from the front
-				pointLight(255, 0, 0, 0, 0, 300);
-			} else {
-				// Yellow
-				pointLight(255, 255, 109, 0, 0, 300);
-			}
-
-			rotateZ(perspective.z);
-			rotateX(perspective.x);
-			rotateY(perspective.y);
-
-			sphere(this.radius);
-
-			if (this.highlighted) {
-				// console.log('label: ', this.label);
-				fill('maroon');
-				noStroke();
-				textSize(16);
-				textFont(font);
-				textAlign(CENTER, CENTER);
-				rotateY(-perspective.y);
-				translate(-width / 2, -height / 2);
-
-				text(this.label, this.pos.x, this.pos.y + this.radius + 10);
-			}
-		} catch (err) {
-			translate(-width / 2, -height / 2);
-			ellipse(this.pos.x, this.pos.y, this.radius);
-
-			if (this.highlighted) {
-				// console.log('label: ', this.label);
-				fill('maroon');
-				noStroke();
-				textSize(16);
-				textFont(font);
-				textAlign(CENTER, CENTER);
-				rotateY(-perspective.y);
-
-				text(this.label, this.pos.x, this.pos.y + this.radius + 10);
-			}
+			text(this.label, 0, 0 + this.radius + 10);
 		}
+		image(planet, 0 - this.radius, 0 - this.radius, this.radius * 2, this.radius * 2);
+
 		pop();
 	}
 }

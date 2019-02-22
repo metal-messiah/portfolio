@@ -35,14 +35,15 @@ class ShootingStar {
 					if (this.pos.y < orb.pos.y + this.orbitRadius) {
 						if (orb.intersectsGeom(this.pos.x, this.pos.y)) {
 							if (!this.willDestroy) {
-								setTimeout(() => {
-									this.destroy();
-								}, 500);
+								// setTimeout(() => {
+								// 	this.destroy();
+								// }, 500);
 
 								for (let i = 0; i < 25; i++) {
 									particles.push(new Particle(this.pos.x, this.pos.y));
 								}
 								console.log('new particles! ', particles.length);
+								this.destroy();
 							}
 							this.willDestroy = true;
 
@@ -147,7 +148,7 @@ class ShootingStar {
 
 	draw() {
 		push();
-		translate(-width / 2, -height / 2);
+		// translate(-width / 2, -height / 2);
 
 		fill(255);
 		stroke(this.getColor());
