@@ -81,7 +81,7 @@ preload = () => {
 	fa = loadFont('./assets/Font Awesome 5 Brands-Regular-400.otf');
 	// fa = 'FontAwesome';
 
-	headshot = loadImage('./assets/headshot_upright.JPG');
+	headshot = loadImage('./assets/headshot_upright.jpg');
 
 	console.log(headshot)
 
