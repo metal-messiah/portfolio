@@ -15,7 +15,7 @@ const subtitle = 28;
 const content = 20;
 const subcontent = 16;
 
-const leftX = 25;
+const leftX = 350 / 2;
 
 let positions = [];
 
@@ -45,9 +45,9 @@ let menuTags = [
 	},
 	{
 		name: 'Murray Surgical',
-		url: 'https://metal-messiah.github.io/murray_surgical/',
+		url: 'https://murraysurgical.com',
 		metadata: `A business suite utilizing a texting & email server with public website.`,
-		stack: `NodeJS | PostgreSQL | jQuery`
+		stack: `NodeJS/Express | PostgreSQL | jQuery`
 	},
 	{
 		name: 'AMP',
@@ -72,22 +72,30 @@ let socialTags = [
 ];
 let socialLinks = [];
 
+let c;
+
+let sidebar;
+
 preload = () => {
 	font = loadFont('./assets/AGENCYB.otf');
 	fa = loadFont('./assets/Font Awesome 5 Brands-Regular-400.otf');
 	// fa = 'FontAwesome';
 
-	headshot = loadImage('./assets/headshot.JPG');
+	headshot = loadImage('./assets/headshot_upright.JPG');
+
+	console.log(headshot)
 
 	planet = loadImage('./assets/planet.png');
-	console.log(planet);
 };
 
 setup = () => {
 	canvas = createCanvas(windowWidth, windowHeight);
-	console.log(canvas);
+
+	sidebar = new Sidebar();
 
 	// translate(-width / 2, -height / 2);
+
+	c = c ? c : ARROW
 
 	perspective.z = PI / 8;
 
@@ -103,8 +111,8 @@ setup = () => {
 	shouldAnimate = new SmoothAnimation();
 
 	socialTags.forEach((sl, i) => {
-		let pos = createVector(width - leftX, i * 50 + 25);
-		socialLinks.push(new SocialLink(sl.txt, pos));
+		let pos = createVector(width - 25, i * 50 + 25);
+		socialLinks.push(new SocialLink(sl.txt, pos, sl.url));
 	});
 
 	menuTags.forEach((tag, i) => {
@@ -141,18 +149,17 @@ setup = () => {
 		scale: 16
 	};
 
-	positions = [ menuItem1, menuItem2, menuItem3, menuItem4 ];
+	positions = [menuItem1, menuItem2, menuItem3, menuItem4];
 
 	menuItems.forEach((item, i) => {
 		let { x, y } = positions[i];
 		item.pos = { x, y };
 	});
-
-	console.log(positions);
 };
 
 draw = () => {
 	background(0);
+	cursor(c)
 	// orbitControl();
 
 	let locX = mouseX - height / 2;
@@ -167,11 +174,9 @@ draw = () => {
 	stars.forEach((star, i) => {
 		if (star.pos.x < 0 || star.pos.y > height) {
 			if (star.pos.y > height) {
-				console.log('create new star');
 				// make sure its off the screen (+5)
 				stars.push(new Star(random(0, width), -5));
 			} else {
-				console.log('create new star');
 				// make sure its off the screen (+5)
 				stars.push(new Star(width + 5, random(0, height)));
 			}
@@ -184,7 +189,6 @@ draw = () => {
 	});
 
 	if (random() < 0.004) {
-		console.log('create shooting star');
 		shootingStars.push(new ShootingStar());
 	}
 	shootingStars.forEach((star, i) => {
@@ -221,80 +225,92 @@ draw = () => {
 		sl.draw();
 	});
 
-	let spacer = 30;
-	let subspacer = 20;
-	let topY = 25;
+	sidebar.draw();
 
-	fill('orange');
-	// translate(-width / 2, -height / 2);
-	textFont(font);
-	textSize(title);
-	textAlign(LEFT, CENTER);
-	text('Jordan Porter', leftX, topY);
-	topY += spacer;
 
-	textSize(content);
-	fill('lightblue');
-	text('Senior Software Developer', leftX, topY);
-	topY += spacer + 15;
+	// let spacer = 30;
+	// let subspacer = 20;
+	// let topY = 25;
 
-	fill('orange');
-	textSize(subtitle);
-	text('Languages', leftX, topY);
-	topY += spacer;
+	// fill('#444');
+	// rect(0, 0, 350, height);
 
-	fill('lightblue');
-	textSize(subcontent);
-	text('• HTML 5', leftX + 5, topY);
-	topY += subspacer;
-	text('• JavaScript', leftX + 5, topY);
-	topY += subspacer;
-	text('• Python', leftX + 5, topY);
-	topY += subspacer;
-	text('• SQL', leftX + 5, topY);
-	topY += spacer;
+	// fill('orange');
+	// // translate(-width / 2, -height / 2);
+	// textFont(font);
+	// textSize(title);
+	// textAlign(CENTER, CENTER);
 
-	fill('orange');
-	textSize(subtitle);
-	text('Frontend', leftX, topY);
-	topY += spacer;
+	// text('Jordan Porter', leftX, topY);
+	// topY += spacer;
+	// textSize(content);
+	// fill('lightblue');
+	// text('Senior Software Developer', leftX, topY);
+	// topY += spacer + 15;
 
-	fill('lightblue');
-	textSize(subcontent);
-	text('• Angular 6+', leftX + 5, topY);
-	topY += subspacer;
-	text('• React', leftX + 5, topY);
-	topY += subspacer;
-	text('• Electron', leftX + 5, topY);
-	topY += spacer;
+	// image(headshot, 25, topY - 10, 300, 400)
+	// topY += spacer + 400;
 
-	fill('orange');
-	textSize(subtitle);
-	text('Backend', leftX, topY);
-	topY += spacer;
 
-	fill('lightblue');
-	textSize(subcontent);
-	text('• NodeJS', leftX + 5, topY);
-	topY += subspacer;
-	text('• Flask', leftX + 5, topY);
-	topY += subspacer;
-	text('• Django', leftX + 5, topY);
-	topY += spacer;
 
-	fill('orange');
-	textSize(subtitle);
-	text('Databases', leftX, topY);
-	topY += spacer;
 
-	fill('lightblue');
-	textSize(subcontent);
-	text('• PostgreSQL', leftX + 5, topY);
-	topY += subspacer;
-	text('• MySQL', leftX + 5, topY);
-	topY += subspacer;
-	text('• MongoDB', leftX + 5, topY);
-	topY += subspacer;
+	// fill('orange');
+	// textSize(subtitle);
+	// text('Languages', leftX, topY);
+	// topY += spacer;
+
+	// fill('lightblue');
+	// textSize(subcontent);
+	// text('• HTML 5', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• JavaScript', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• Python', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• SQL', leftX + 5, topY);
+	// topY += spacer;
+
+	// fill('orange');
+	// textSize(subtitle);
+	// text('Frontend', leftX, topY);
+	// topY += spacer;
+
+	// fill('lightblue');
+	// textSize(subcontent);
+	// text('• Angular 6+', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• React', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• Electron', leftX + 5, topY);
+	// topY += spacer;
+
+	// fill('orange');
+	// textSize(subtitle);
+	// text('Backend', leftX, topY);
+	// topY += spacer;
+
+	// fill('lightblue');
+	// textSize(subcontent);
+	// text('• NodeJS', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• Flask', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• Django', leftX + 5, topY);
+	// topY += spacer;
+
+	// fill('orange');
+	// textSize(subtitle);
+	// text('Databases', leftX, topY);
+	// topY += spacer;
+
+	// fill('lightblue');
+	// textSize(subcontent);
+	// text('• PostgreSQL', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• MySQL', leftX + 5, topY);
+	// topY += subspacer;
+	// text('• MongoDB', leftX + 5, topY);
+	// topY += subspacer;
 
 	// push();
 	// texture(image);
@@ -321,14 +337,19 @@ mousePressed = (evt) => {
 			}
 		}
 	});
+
+	socialLinks.forEach((sl) => {
+		if (sl.intersectsGeom(mouseX, mouseY)) {
+			window.open(sl.url, '_blank');
+		}
+	})
 };
 
 mouseMoved = (evt) => {
+	c = ARROW
 	try {
 		if (orb.intersectsGeom(mouseX, mouseY, true)) {
-			cursor('pointer');
-		} else {
-			cursor('default');
+			c = HAND
 		}
 	} catch (err) {
 		// orb is still loading
@@ -338,15 +359,23 @@ mouseMoved = (evt) => {
 		if (item.intersectsGeom(mouseX, mouseY)) {
 			item.showMetadata = true;
 			item.showStack = true;
-			cursor(HAND);
+			c = HAND
 		} else {
 			if (item.showMetadata || item.showStack) {
 				item.showMetadata = false;
 				item.showStack = false;
 			}
-			cursor(ARROW);
+		}
+	});
+
+	socialLinks.forEach((item, i) => {
+		if (item.intersectsGeom(mouseX, mouseY)) {
+			item.setColor('lightblue')
+			c = HAND
+		} else {
+			item.setColor('orange')
 		}
 	});
 };
 
-rotateOrb = () => {};
+rotateOrb = () => { };
