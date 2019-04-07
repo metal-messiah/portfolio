@@ -1,11 +1,7 @@
-const closeButtons = document.getElementsByClassName("close");
-const sideBar = document.getElementById("sidebar");
-
-const skills = document.getElementById("skills");
-const bio = document.getElementById("bio");
-const about = document.getElementById("about");
-
-const contents = [skills, bio, about];
+const closeButtons = document.querySelectorAll('.close');
+const sideBar = document.querySelector('#sidebar');
+const tabs = document.querySelectorAll('.tab');
+const sidebarContents = document.querySelectorAll('.sidebar-contents');
 
 const toggleSidebar = () => {
     const currentLeft = sideBar.style.left;
@@ -18,33 +14,44 @@ const openSidebar = () => {
 }
 
 const closeSidebar = () => {
-    console.log("close sidebar")
+    console.log('close sidebar')
     sideBar.style.left = -sideBar.offsetWidth;
 }
 
 const setSidebarContent = (key) => {
-    console.log("set sidebar content")
+    let elem = document.querySelector(`#${key}`);
     clearAll();
-    switch (key) {
-        case 'skills':
-            skills.style.display = 'flex';
-            break;
-        case 'bio':
-            bio.style.display = 'flex';
-            break;
-        case 'about':
-            about.style.display = 'flex';
-            break;
-    }
+    elem.style.display = 'flex';
+    setTabActive(key);
     openSidebar();
 }
 
 const clearAll = () => {
-    console.log("clear all")
-    contents.forEach(c => c.style.display = 'none');
+    console.log('clear all')
+    Array.from(sidebarContents).forEach(c => {
+        c.style.display = 'none';
+    });
+}
+
+const setTabActive = (tag) => {
+    Array.from(tabs).forEach(tab => {
+        if (tab.dataset.tag === tag) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
 }
 
 
-Array.from(closeButtons).forEach(b => b.addEventListener("click", (e) => closeSidebar()));
+Array.from(closeButtons).forEach(b => {
+    b.addEventListener('click', (e) => closeSidebar())
+    b.addEventListener('touchstart', () => closeSidebar());
+});
 
+
+Array.from(tabs).forEach(tab => {
+    tab.addEventListener('click', () => setSidebarContent(tab.dataset.tag));
+    tab.addEventListener('touchstart', () => setSidebarContent(tab.dataset.tag));
+})
 

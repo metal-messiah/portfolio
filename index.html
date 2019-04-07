@@ -32,14 +32,20 @@
   </div>
   <div id="sidebar">
     <div class="sidebar-tabs">
-      <div class="tab" onclick="setSidebarContent('bio')">
+      <div class="tab" data-tag="bio">
         Bio
       </div>
-      <div class="tab" onclick="setSidebarContent('skills')">
+      <div class="tab" data-tag="education">
+        Education
+      </div>
+      <div class="tab" data-tag="skills">
         Skills
       </div>
-      <div class="tab" onclick="setSidebarContent('about')">
+      <div class="tab" data-tag="about">
         About This Page
+      </div>
+      <div class="tab" data-tag="contact">
+        Email Me
       </div>
     </div>
     <div id="skills" class="sidebar-contents">
@@ -141,6 +147,47 @@
           have been commercial and highly privatized, thereby limiting my ability to share examples or snippets. If you
           would like further information about any of my work, please don't hesitate to contact me.
         </span>
+      </div>
+    </div>
+
+
+    <div id="contact" class="sidebar-contents">
+      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
+        <div class="title-heading">
+          <h1>Jordan Porter</h1>
+          <h3>Senior Software Developer</h3>
+        </div>
+        <div class="close">
+          <i class="fas fa-times-circle" style="margin: 25px;"></i>
+        </div>
+      </div>
+
+      <div class="group" style="align-items: flex-end;">
+        <!-- <h2>Email</h2> -->
+        <div><a href="mailto:jordan@mtnra.com" target="_blank">jordan@mtnra.com</a></div>
+      </div>
+    </div>
+
+    <div id="education" class="sidebar-contents">
+      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
+        <div class="title-heading">
+          <h1>Jordan Porter</h1>
+          <h3>Senior Software Developer</h3>
+        </div>
+        <div class="close">
+          <i class="fas fa-times-circle" style="margin: 25px;"></i>
+        </div>
+      </div>
+
+      <div class="group">
+        <ul>
+          <li>Full-Stack Software Development Certificate<div class="subfoot">DevMountain, 2018</div>
+          </li>
+          <li>Bachelor of Science in GIS<div class="subfoot">Weber State University, 2012</div>
+          </li>
+          <li>Geomatics Certificate<div class="subfoot">Weber State University, 2011</div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
