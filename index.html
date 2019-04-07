@@ -13,7 +13,7 @@
   <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"
     integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7"
     crossorigin="anonymous"></script>
-  <script src="sketch.js"></script>
+  <script src="./sketch.js"></script>
   <script src="./classes/sphere.js"></script>
   <script src="./classes/menuItem.js"></script>
   <script src="./classes/smoothAnimation.js"></script>
@@ -26,6 +26,125 @@
 </head>
 
 <body>
+  <div class="big-title">
+    <div class="big">Jordan Porter</div>
+    <div class="little">Senior Software Developer</div>
+  </div>
+  <div id="sidebar">
+    <div class="sidebar-tabs">
+      <div class="tab" onclick="setSidebarContent('bio')">
+        Bio
+      </div>
+      <div class="tab" onclick="setSidebarContent('skills')">
+        Skills
+      </div>
+      <div class="tab" onclick="setSidebarContent('about')">
+        About This Page
+      </div>
+    </div>
+    <div id="skills" class="sidebar-contents">
+      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
+        <div class="title-heading">
+          <h1>Jordan Porter</h1>
+          <h3>Senior Software Developer</h3>
+        </div>
+        <div class="close">
+          <i class="fas fa-times-circle" style="margin: 25px;"></i>
+        </div>
+      </div>
+      <div class="group">
+        <h2>Languages</h2>
+        <ul>
+          <li>HTML 5</li>
+          <li>JavaScript</li>
+          <li>Python</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+      <div class="group">
+        <h2>Frontend</h2>
+        <ul>
+          <li>Angular 6+</li>
+          <li>ReactJS</li>
+          <li>Electron</li>
+        </ul>
+      </div>
+      <div class="group">
+        <h2>Backend</h2>
+        <ul>
+          <li>NodeJS</li>
+          <li>Flask</li>
+          <li>Django</li>
+          <li>ArcGIS Server</li>
+        </ul>
+      </div>
+      <div class="group">
+        <h2>Databases</h2>
+        <ul>
+          <li>PostgreSQL</li>
+          <li>MySQL</li>
+          <li>MongoDB</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="bio" class="sidebar-contents">
+      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
+        <div class="title-heading">
+          <h1>Jordan Porter</h1>
+          <h3>Senior Software Developer</h3>
+        </div>
+        <div class="close">
+          <i class="fas fa-times-circle" style="margin: 25px;"></i>
+        </div>
+      </div>
+      <div class="group">
+        <img src="./assets/headshot_upright.jpg">
+      </div>
+      <div class="group">
+        <span>
+          Focused software developer creating full stack applications since 2012. I have a
+          passion for creating easy-to-digest interfaces, logical backends, and using my background in Geography to
+          integrate maps and spatial analysis with web applications.
+          <hr>
+          I have had the priveledge to experience a variety of experiences along the way. I have built portable spatial
+          analysis solutions for commercial real estate brokers and their clients. I have created internal and external
+          tools and applications for modeling, managing, and diversifying millions of
+          datapoints to understand revenue streams in the grocery sector. I have managed various authentication systems,
+          database structures, full scale wireframing and architechtural procedures, API provisioning, session
+          management, deployment operations and much more. I have built commercial websites, full stack applications,
+          and internal toolsets, as well as led open-source publicly-consumed application development projects.
+        </span>
+      </div>
+    </div>
+
+
+    <div id="about" class="sidebar-contents">
+      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
+        <div class="title-heading">
+          <h1>Jordan Porter</h1>
+          <h3>Senior Software Developer</h3>
+        </div>
+        <div class="close">
+          <i class="fas fa-times-circle" style="margin: 25px;"></i>
+        </div>
+      </div>
+      <div class="group">
+        <span>
+          This page utilizes a simple physics engine I compiled to run alongside P5.js for canvas rendering. It was
+          built and used as a teaching exercise with my son and
+          we both loved the outcome and found some uses for it. It was the basis used to build the "Speed Rockets" game
+          featured orbiting the planet in the center. The engine is built
+          completely in JavaScript and runs live in the browser.
+          <hr>
+          The projects listed are a small subset of the work I have done. Most of the projects I have been a part of
+          have been commercial and highly privatized, thereby limiting my ability to share examples or snippets. If you
+          would like further information about any of my work, please don't hesitate to contact me.
+        </span>
+      </div>
+    </div>
+  </div>
+  <script src="./logic.js"></script>
 </body>
 
 </html>

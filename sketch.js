@@ -81,9 +81,9 @@ preload = () => {
 	fa = loadFont('./assets/Font Awesome 5 Brands-Regular-400.otf');
 	// fa = 'FontAwesome';
 
-	headshot = loadImage('./assets/headshot_upright.jpg');
+	// headshot = loadImage('./assets/headshot_upright.jpg');
 
-	console.log(headshot)
+	// console.log(headshot)
 
 	planet = loadImage('./assets/planet.png');
 };
@@ -111,7 +111,7 @@ setup = () => {
 	shouldAnimate = new SmoothAnimation();
 
 	socialTags.forEach((sl, i) => {
-		let pos = createVector(width - 25, i * 50 + 25);
+		let pos = createVector(width - 25, height - 50 - i * 50 + 25);
 		socialLinks.push(new SocialLink(sl.txt, pos, sl.url));
 	});
 
@@ -225,7 +225,7 @@ draw = () => {
 		sl.draw();
 	});
 
-	sidebar.draw();
+	// sidebar.draw();
 
 
 	// let spacer = 30;

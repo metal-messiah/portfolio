@@ -1,5 +1,12 @@
+
+@font-face {
+	font-family: 'agency';
+	src: url('./assets/AGENCYB.otf');
+  }
+
 body {
 	/* padding: 25px; */
+	font-family: 'agency';
 	margin: 0;
 	display: flex;
 	align-items: center;
@@ -7,6 +14,21 @@ body {
 
 	flex-wrap: wrap-reverse;
 	background: black;
+
+	font-size: 18pt;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: orange;
+  outline: 1px solid slategrey;
 }
 
 canvas {
@@ -15,4 +37,155 @@ canvas {
 
 .html-content {
 	color: orange;
+}
+
+.big-title{
+	position: absolute;
+	width: calc(100vw - 125px);
+	padding: 0 15px;
+	right: 0;
+	top: 0;
+	color: #999;
+	text-align: right;
+	opacity: 0.33;
+}
+
+#sidebar{
+	width: 350px;
+	height: 100vh;
+
+	background: #444;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+
+	position: absolute;
+	top: 0;
+	left: -350px;
+
+	transition: all 1s ease-in-out;
+}
+
+.sidebar-contents{
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	overflow-y: scroll;
+	max-height: 100vh;
+}
+
+.sidebar-tabs{
+	position: absolute;
+	right: -100px;
+	top: 0;
+	width: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.tab{
+	background: orange;
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+	cursor: pointer;
+	border-radius: 0 5px 5px 0;
+	margin: 10px 0 0;
+}
+
+.tab:hover{
+	background: lightblue;
+}
+
+#bio{
+	display:none;
+}
+
+.title-heading{
+	background: orange;
+	color: #444;
+	width: 100%;
+	border-radius: 0 0 15px;
+}
+
+.group{
+	width: 100%;
+	padding: 25px 0;
+	/* margin: 25px 0; */
+	/* margin: 0 0 25px; */
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	color: orange;
+	border-bottom: 1px dashed orange;
+}
+
+.group h1, .group h2, .group h3, .group ul{
+	text-align: center;
+	margin: 0 10px;
+}
+
+.close{
+	position: relative;
+	cursor: pointer;
+	/* height: 100%; */
+	font-size: xx-large;
+}
+
+.close:hover{
+	color: orange;
+	background: black;
+}
+
+.group img{
+	margin: 0 auto;
+	border-radius: 15px
+}
+
+.group span{
+	padding: 0 15px;
+	text-align: center;
+}
+
+.force-block{
+	display: block !important;
+}
+
+.big-title .big{
+	font-size: 72pt;
+}
+
+.big-title .little{
+	font-size: 36pt;
+}
+
+@media only screen and (max-width: 600px) {
+	#sidebar{
+		width: calc(100vw - 100px);
+		left: calc(-100vw + 100px);
+	}
+	
+	.close i, h1{
+		font-size: 48pt;
+	}
+
+	h2{
+		font-size: 36pt;
+	}
+
+	h3{
+		font-size: 24pt;
+	}
+
+	.big-title .big{
+		font-size: 48pt;
+	}
+	
+	.big-title .little{
+		font-size: 24pt;
+	}
+	
 }
