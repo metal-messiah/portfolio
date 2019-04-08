@@ -184,7 +184,7 @@ canvas {
 }
 
 .group ul{
-	font-size: medium;
+	font-size: large;
 }
 
 .group a {
@@ -210,7 +210,7 @@ canvas {
 
 .subfoot{
 	color: lightblue;
-	font-size: 12pt;
+	font-size: large;
 }
 
 .tab.active{
