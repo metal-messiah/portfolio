@@ -91,8 +91,6 @@ preload = () => {
 setup = () => {
 	canvas = createCanvas(windowWidth, windowHeight);
 
-	sidebar = new Sidebar();
-
 	// translate(-width / 2, -height / 2);
 
 	c = c ? c : ARROW
@@ -150,6 +148,82 @@ setup = () => {
 	};
 
 	positions = [menuItem1, menuItem2, menuItem3, menuItem4];
+
+	menuItems.forEach((item, i) => {
+		let { x, y } = positions[i];
+		item.pos = { x, y };
+	});
+};
+
+reset = () => {
+	console.log("reset")
+	canvas = createCanvas(windowWidth, windowHeight);
+
+	// translate(-width / 2, -height / 2);
+
+	c = c ? c : ARROW
+
+	perspective.z = PI / 8;
+
+	orb = new Sphere(width / 2, height / 2, 0);
+	// centerGraphic = new CenterGraphic();
+
+	stars = [];
+
+	for (let i = 0; i < 200; i++) {
+		stars.push(new Star(random(0, width), random(0, height)));
+	}
+
+	shootingStars = [];
+	shootingStars.push(new ShootingStar());
+
+	shouldAnimate = new SmoothAnimation();
+
+	socialLinks = [];
+
+	socialTags.forEach((sl, i) => {
+		let pos = createVector(width - 25, height - 50 - i * 50 + 25);
+		socialLinks.push(new SocialLink(sl.txt, pos, sl.url));
+	});
+
+	menuItems = [];
+
+	menuTags.forEach((tag, i) => {
+		menuItems.push(new MenuItem(0, 0, 0, tag.name, tag.metadata, tag.stack, i, tag.url));
+	});
+
+	const total = menuItems.length;
+
+	const menuItem1 = {
+		x: windowWidth * 0.3,
+		y: windowHeight * 0.4,
+		shouldShow: true,
+		scale: 24
+	};
+
+	const menuItem2 = {
+		x: windowWidth * 0.55,
+		y: windowHeight * 0.75,
+		shouldShow: true,
+		scale: 36
+	};
+
+	const menuItem3 = {
+		x: windowWidth * 0.7,
+		y: windowHeight * 0.6,
+		shouldShow: true,
+		scale: 24
+	};
+
+	const menuItem4 = {
+		x: windowWidth * 0.5,
+		y: windowHeight * 0.45,
+		shouldShow: false,
+		scale: 16
+	};
+
+	positions = [menuItem1, menuItem2, menuItem3, menuItem4];
+	console.log(positions)
 
 	menuItems.forEach((item, i) => {
 		let { x, y } = positions[i];
@@ -377,5 +451,11 @@ mouseMoved = (evt) => {
 		}
 	});
 };
+
+function windowResized() {
+	resizeCanvas(windowWidth, windowHeight);
+
+	reset();
+}
 
 rotateOrb = () => { };

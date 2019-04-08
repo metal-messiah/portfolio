@@ -11,11 +11,20 @@ const toggleSidebar = () => {
 
 const openSidebar = () => {
     sideBar.style.left = 0;
+    Array.from(closeButtons).forEach(b => {
+        b.style.display = 'flex';
+    });
 }
 
 const closeSidebar = () => {
     console.log('close sidebar')
     sideBar.style.left = -sideBar.offsetWidth;
+
+    Array.from(closeButtons).forEach(b => {
+        b.style.display = 'none';
+    });
+
+    setTabActive(null);
 }
 
 const setSidebarContent = (key) => {

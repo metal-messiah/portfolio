@@ -16,6 +16,8 @@ body {
 	background: black;
 
 	font-size: 18pt;
+
+	overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -89,11 +91,15 @@ canvas {
 .tab{
 	background: orange;
 	width: 100%;
-	text-align: center;
+	text-align: right;
 	padding: 5px;
 	cursor: pointer;
 	border-radius: 0 5px 5px 0;
 	margin: 5px 0 0;
+	font-size: medium;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .tab:hover{
@@ -108,7 +114,15 @@ canvas {
 	background: orange;
 	color: #444;
 	width: 100%;
-	border-radius: 0 0 15px;
+	/* border-radius: 0 0 15px; */
+}
+
+.title-heading h1{
+	margin-bottom: 0;
+}
+
+.title-heading h4{
+	margin-top: 0;
 }
 
 .group{
@@ -123,9 +137,9 @@ canvas {
 	border-bottom: 1px dashed orange;
 }
 
-.group h1, .group h2, .group h3, .group ul{
+.group h1, .group h2, .group h3, .group h4, .group ul{
 	text-align: center;
-	margin: 0 10px;
+	/* margin: 0 10px; */
 }
 
 .close{
@@ -133,21 +147,44 @@ canvas {
 	cursor: pointer;
 	/* height: 100%; */
 	font-size: xx-large;
+	color: orange;
+	text-align: right;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 0 0 5px;
+	display: none;
+}
+
+.close::before{
+	content: "Close";
+	font-size: small;
 }
 
 .close:hover{
-	color: orange;
-	background: black;
+	color: lightblue;
+	justify-content: left;
+}
+
+.close-text{
+	font-size: small;
 }
 
 .group img{
 	margin: 0 auto;
-	border-radius: 15px
+	border-radius: 15px;
+	max-width: 80%;
+	height: auto;
 }
 
 .group span{
 	padding: 0 15px;
 	text-align: center;
+}
+
+.group ul{
+	font-size: medium;
 }
 
 .group a {
@@ -177,16 +214,29 @@ canvas {
 }
 
 .tab.active{
-    box-shadow: 0px 0px 10px 2px inset white;
+		box-shadow: 0px 0px 10px 2px inset #444;
+		background: lightblue;
 }
 
-@media only screen and (max-width: 600px) {
+.blue{
+	color: lightblue;
+}
+
+.mobile-only{
+	display: none;
+}
+
+@media (max-width: 600px)  {
 	#sidebar{
 		width: calc(100vw - 100px);
 		left: calc(-100vw + 100px);
 	}
+
+	.mobile-only{
+		display: block;
+	}
 	
-	.close i, h1{
+	/* .close i, h1{
 		font-size: 48pt;
 	}
 
@@ -196,7 +246,7 @@ canvas {
 
 	h3{
 		font-size: 24pt;
-	}
+	} */
 
 	.big-title .big{
 		font-size: 48pt;
