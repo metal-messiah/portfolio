@@ -74,7 +74,8 @@ canvas {
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 	overflow-y: scroll;
-	max-height: 100vh;
+	max-height: 95vh;
+	height: 95vh;
 }
 
 .sidebar-tabs{
