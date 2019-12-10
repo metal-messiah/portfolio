@@ -1,48 +1,51 @@
 class Sphere {
-	constructor(x, y, z) {
-		this.pos = { x, y, z };
-		this.radius = 75;
-		this.highlighted = false;
-		this.label = 'Rotate';
+  constructor(x, y, z) {
+    this.pos = { x, y, z };
+    this.radius = 75;
+    this.highlighted = false;
+    this.label = 'Rotate';
 
-		this.rotation = 0;
+    this.rotation = 0;
 
-		console.log(this.pos);
-	}
+    console.log(this.pos);
+  }
 
-	intersectsGeom(x, y, highlight) {
-		if (x < this.pos.x + this.radius - 15) {
-			if (x > this.pos.x - this.radius + 15) {
-				if (y < this.pos.y + this.radius - 15) {
-					if (y > this.pos.y - this.radius + 15) {
-						if (highlight) this.highlighted = true;
-						return true;
-					}
-				}
-			}
-		}
-		if (highlight) this.highlighted = false;
-		return false;
-	}
+  intersectsGeom(x, y, highlight) {
+    if (x < this.pos.x + this.radius - 15) {
+      if (x > this.pos.x - this.radius + 15) {
+        if (y < this.pos.y + this.radius - 15) {
+          if (y > this.pos.y - this.radius + 15) {
+            if (highlight) this.highlighted = true;
+            return true;
+          }
+        }
+      }
+    }
+    if (highlight) this.highlighted = false;
+    return false;
+  }
 
-	draw() {
-		this.rotation += 0.001;
-		push();
-		translate(width / 2, height / 2);
-		rotate(this.rotation);
-		if (this.highlighted) {
-			fill(color(255, 165, 0, 100));
+  draw() {
+    this.rotation += 0.001;
+    push();
+    translate(width / 2, height / 2);
 
-			ellipse(0, 0, this.radius * 2 + 10);
-			noStroke();
-			textSize(16);
-			textFont(font);
-			textAlign(CENTER, CENTER);
+    rotate(0);
+    if (this.highlighted) {
+      fill(color(255, 165, 0, 100));
 
-			text(this.label, 0, 0 + this.radius + 10);
-		}
-		image(planet, 0 - this.radius, 0 - this.radius, this.radius * 2, this.radius * 2);
+      ellipse(0, 0, this.radius * 2 + 10);
+      noStroke();
+      textSize(16);
+      textFont(font);
+      textAlign(CENTER, CENTER);
 
-		pop();
-	}
+      text(this.label, 0, 0 + this.radius + 10);
+    }
+
+    rotate(this.rotation);
+    image(planet, 0 - this.radius, 0 - this.radius, this.radius * 2, this.radius * 2);
+
+    pop();
+  }
 }

@@ -40,14 +40,14 @@ let menuTags = [
   {
     name: 'JopeBot',
     url: 'https://jopebot-web-beta.herokuapp.com/',
-    metadata: `A platform for managing streaming request queues on Twitch.tv`,
-    stack: `NodeJs/Express | PostgreSQL | Angular 6`
+    metadata: `A (beta) Twitch.tv integration app.  Login with "jtmmtest" | "s0ftware_d3m0!"`,
+    stack: `NodeJs + Express | PostgreSQL | Angular 6`
   },
   {
     name: 'HobbyPocket',
     url: 'https://metal-messiah.github.io/nike/',
     metadata: `A simple demo for stylistically maintaining a list of hobbies`,
-    stack: `ReactJS`
+    stack: `ReactJS + Redux`
   },
   {
     name: 'SkiFree',
@@ -79,11 +79,6 @@ let sidebar;
 preload = () => {
   font = loadFont('./assets/AGENCYB.otf');
   fa = loadFont('./assets/Font Awesome 5 Brands-Regular-400.otf');
-  // fa = 'FontAwesome';
-
-  // headshot = loadImage('./assets/headshot_upright.jpg');
-
-  // console.log(headshot)
 
   planet = loadImage('./assets/planet.png');
 };
@@ -91,14 +86,11 @@ preload = () => {
 setup = () => {
   canvas = createCanvas(windowWidth, windowHeight);
 
-  // translate(-width / 2, -height / 2);
-
   c = c ? c : ARROW;
 
   perspective.z = PI / 8;
 
   orb = new Sphere(width / 2, height / 2, 0);
-  // centerGraphic = new CenterGraphic();
 
   for (let i = 0; i < 200; i++) {
     stars.push(new Star(random(0, width), random(0, height)));

@@ -1,197 +1,198 @@
 <html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assets/AGENCYB.otf" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"
+      integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./sketch.js"></script>
+    <script src="./classes/sphere.js"></script>
+    <script src="./classes/menuItem.js"></script>
+    <script src="./classes/smoothAnimation.js"></script>
+    <script src="./classes/centerGraphic.js"></script>
+    <script src="./classes/star.js"></script>
+    <script src="./classes/shootingStar.js"></script>
+    <script src="./classes/socialLink.js"></script>
+    <script src="./classes/particle.js"></script>
+    <script src="./classes/sidebar.js"></script>
+  </head>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link href="./assets/AGENCYB.otf" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"
-    integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7"
-    crossorigin="anonymous"></script>
-  <script src="./sketch.js"></script>
-  <script src="./classes/sphere.js"></script>
-  <script src="./classes/menuItem.js"></script>
-  <script src="./classes/smoothAnimation.js"></script>
-  <script src="./classes/centerGraphic.js"></script>
-  <script src="./classes/star.js"></script>
-  <script src="./classes/shootingStar.js"></script>
-  <script src="./classes/socialLink.js"></script>
-  <script src="./classes/particle.js"></script>
-  <script src="./classes/sidebar.js"></script>
-</head>
-
-<body>
-  <div class="big-title">
-    <div class="big">Jordan Porter</div>
-    <div class="little">Software<br class="mobile-only" /> Developer</div>
-  </div>
-  <div id="sidebar">
-    <div class="sidebar-tabs">
-      <div class="tab" data-tag="bio">
-        <i class="fas fa-address-card"></i>
-        <span>Bio</span>
-      </div>
-      <div class="tab" data-tag="education">
-        <i class="fas fa-user-graduate"></i> Education
-      </div>
-      <div class="tab" data-tag="skills">
-        <i class="fas fa-fist-raised"></i> Skills
-      </div>
-      <div class="tab" data-tag="about">
-        <i class="fas fa-info-circle"></i> What is This
-      </div>
-      <div class="tab" data-tag="contact">
-        <i class="fas fa-envelope"></i> Email Me
-      </div>
-      <div id="close" class="close">
-        <i style=" margin-left: 5px" class="fas fa-backspace"></i>
+  <body>
+    <div class="big-title">
+      <div class="big">Jordan Porter</div>
+      <div class="little">
+        Software<br class="mobile-only" />
+        Developer
       </div>
     </div>
-    <div id="skills" class="sidebar-contents">
-      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
-        <div class="title-heading">
-          <h1>Jordan Porter</h1>
-          <h4>Full Stack Software Developer</h4>
+    <div id="sidebar">
+      <div class="sidebar-tabs">
+        <div class="tab" data-tag="bio">
+          <i class="fas fa-address-card"></i>
+          <span>Bio</span>
         </div>
-
-      </div>
-      <div class="group">
-        <h3>Languages</h3>
-        <ul>
-          <li>HTML 5</li>
-          <li>JavaScript</li>
-          <li>Python</li>
-          <li>SQL</li>
-        </ul>
-      </div>
-      <div class="group">
-        <h3>Frontend</h3>
-        <ul>
-          <li>Angular 6+</li>
-          <li>ReactJS</li>
-          <li>Electron</li>
-        </ul>
-      </div>
-      <div class="group">
-        <h3>Backend</h3>
-        <ul>
-          <li>NodeJS</li>
-          <li>Flask</li>
-          <li>Django</li>
-          <li>ArcGIS Server</li>
-        </ul>
-      </div>
-      <div class="group">
-        <h3>Databases</h3>
-        <ul>
-          <li>PostgreSQL</li>
-          <li>MySQL</li>
-          <li>MongoDB</li>
-        </ul>
-      </div>
-    </div>
-
-    <div id="bio" class="sidebar-contents">
-      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
-        <div class="title-heading">
-          <h1>Jordan Porter</h1>
-          <h4>Full Stack Software Developer</h4>
+        <div class="tab" data-tag="education"><i class="fas fa-user-graduate"></i> Education</div>
+        <div class="tab" data-tag="skills"><i class="fas fa-fist-raised"></i> Skills</div>
+        <div class="tab" data-tag="about"><i class="fas fa-info-circle"></i> What is This</div>
+        <div class="tab" data-tag="contact"><i class="fas fa-envelope"></i> Email Me</div>
+        <div id="close" class="close">
+          <i style=" margin-left: 5px" class="fas fa-backspace"></i>
         </div>
       </div>
-      <div class="group">
-        <img src="./assets/headshot_upright.jpg">
+      <div id="skills" class="sidebar-contents">
+        <div class="group topper">
+          <div class="title-heading">
+            <h1>Jordan Porter</h1>
+            <h4>Full Stack Software Developer</h4>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Languages</h3>
+          <ul>
+            <li>HTML 5</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>SQL</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Frontend</h3>
+          <ul>
+            <li>Angular 6+</li>
+            <li>ReactJS</li>
+            <li>Electron</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Backend</h3>
+          <ul>
+            <li>NodeJS</li>
+            <li>Flask</li>
+            <li>Django</li>
+            <li>ArcGIS Server</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Databases</h3>
+          <ul>
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>MongoDB</li>
+          </ul>
+        </div>
       </div>
-      <div class="group">
-        <span>
-          <span class="blue">
-            Focused software developer creating full stack applications since 2012. I have a
-            passion for creating easy-to-digest interfaces, logical backends, and using my background in GIS to
-            integrate maps and spatial analysis with web applications. I am very grateful to have had the priveledge to
-            work through a variety of challenges along the way.
-          </span>
-          <br />
+
+      <div id="bio" class="sidebar-contents">
+        <div class="group topper">
+          <div class="title-heading">
+            <h1>Jordan Porter</h1>
+            <h4>Full Stack Software Developer</h4>
+          </div>
+        </div>
+        <div class="group">
+          <img src="./assets/headshot_upright.jpg" />
+        </div>
+        <div class="group">
           <span>
-
-            <hr>
-            I have built portable spatial analysis solutions for commercial real estate brokers and their clients.
-            <hr> I have created internal and external tools and applications for modeling, managing, and diversifying
-            millions of
-            datapoints to understand revenue streams in the grocery sector.
-            <hr> I have managed various authentication systems, database structures, full scale wireframing and
-            architechtural procedures, API provisioning, session
-            management, deployment operations and much more.
-            <hr> I have built commercial websites, full stack applications,
-            and internal toolsets, as well as led open-source publicly-consumed application development projects.
+            <span class="blue">
+              Focused software developer creating full stack applications since 2012. I have a passion for creating
+              easy-to-digest interfaces, logical backends, and using my background in GIS to integrate maps and spatial
+              analysis with web applications. I am very grateful to have had the priveledge to work through a variety of
+              challenges along the way.
+            </span>
+            <br />
+            <span>
+              <hr />
+              I have built portable spatial analysis solutions for commercial real estate brokers and their clients.
+              <hr />
+              I have created internal and external tools and applications for modeling, managing, and diversifying
+              millions of datapoints to understand revenue streams in the grocery sector.
+              <hr />
+              I have managed various authentication systems, database structures, full scale wireframing and
+              architechtural procedures, API provisioning, session management, deployment operations and much more.
+              <hr />
+              I have built commercial websites, full stack applications, and internal toolsets, as well as led
+              open-source publicly-consumed application development projects.
+            </span>
           </span>
-        </span>
-      </div>
-    </div>
-
-
-    <div id="about" class="sidebar-contents">
-      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
-        <div class="title-heading">
-          <h1>Jordan Porter</h1>
-          <h4>Full Stack Software Developer</h4>
-        </div>
-      </div>
-      <div class="group">
-        <span>
-          This page utilizes a simple physics engine I compiled to run alongside P5.js for canvas rendering. It was
-          built and used as a teaching exercise with my son and
-          we both loved the outcome and found some uses for it. It was the basis used to build the "Speed Rockets" game
-          featured orbiting the planet in the center. The engine is built
-          completely in JavaScript and runs live in the browser.
-          <hr>
-          The projects listed are a small subset of the work I have done. Most of the projects I have been a part of
-          have been commercial and highly privatized, thereby limiting my ability to share examples or snippets. If you
-          would like further information about any of my work, please don't hesitate to contact me.
-        </span>
-      </div>
-    </div>
-
-
-    <div id="contact" class="sidebar-contents">
-      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
-        <div class="title-heading">
-          <h1>Jordan Porter</h1>
-          <h4>Full Stack Software Developer</h4>
         </div>
       </div>
 
-      <div class="group" style="align-items: flex-end;">
-        <!-- <h3>Email</h3> -->
-        <div><a href="mailto:jordan@mtnra.com" target="_blank">jordan@mtnra.com</a></div>
-      </div>
-    </div>
-
-    <div id="education" class="sidebar-contents">
-      <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
-        <div class="title-heading">
-          <h1>Jordan Porter</h1>
-          <h4>Full Stack Software Developer</h4>
+      <div id="about" class="sidebar-contents">
+        <div class="group topper">
+          <div class="title-heading">
+            <h1>Jordan Porter</h1>
+            <h4>Full Stack Software Developer</h4>
+          </div>
+        </div>
+        <div class="group">
+          <span>
+            This page utilizes a simple physics engine I compiled to run alongside P5.js for canvas rendering. It was
+            built and used as a teaching exercise with my son and we both loved the outcome and found some uses for it.
+            It was the basis used to build the "Speed Rockets" game featured orbiting the planet in the center. The
+            engine is built completely in JavaScript and runs live in the browser.
+            <hr />
+            The projects listed are a small subset of the work I have done. Most of the projects I have been a part of
+            have been commercial and highly privatized, thereby limiting my ability to share examples or snippets. If
+            you would like further information about any of my work, please don't hesitate to contact me.
+          </span>
         </div>
       </div>
 
-      <div class="group">
-        <ul style='font-size: x-large;'>
-          <li>Full-Stack Software Development Certificate<div class="subfoot">DevMountain, 2018</div>
-          </li>
-          <li>Bachelor of Science in GIS<div class="subfoot">Weber State University, 2012</div>
-          </li>
-          <li>Geomatics Certificate<div class="subfoot">Weber State University, 2011</div>
-          </li>
-        </ul>
+      <div id="contact" class="sidebar-contents">
+        <div class="group" style="padding: 0; border-bottom: none; align-items: flex-start">
+          <div class="title-heading">
+            <h1>Jordan Porter</h1>
+            <h4>Full Stack Software Developer</h4>
+          </div>
+        </div>
+
+        <div class="group" style="align-items: flex-end;">
+          <!-- <h3>Email</h3> -->
+          <div><a href="mailto:jordan@mtnra.com" target="_blank">jordan@mtnra.com</a></div>
+        </div>
+      </div>
+
+      <div id="education" class="sidebar-contents">
+        <div class="group topper">
+          <div class="title-heading">
+            <h1>Jordan Porter</h1>
+            <h4>Full Stack Software Developer</h4>
+          </div>
+        </div>
+
+        <div class="group">
+          <ul style="font-size: x-large;">
+            <li>
+              Full-Stack Software Development Certificate
+              <div class="subfoot">DevMountain, 2018</div>
+            </li>
+            <li>
+              Bachelor of Science in GIS
+              <div class="subfoot">Weber State University, 2012</div>
+            </li>
+            <li>
+              Geomatics Certificate
+              <div class="subfoot">Weber State University, 2011</div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="./logic.js"></script>
-</body>
-
+    <script src="./logic.js"></script>
+  </body>
 </html>
