@@ -17,7 +17,6 @@ const openSidebar = () => {
 };
 
 const closeSidebar = () => {
-  console.log('close sidebar');
   sideBar.style.left = -sideBar.offsetWidth;
 
   Array.from(closeButtons).forEach(b => {
@@ -36,7 +35,6 @@ const setSidebarContent = key => {
 };
 
 const clearAll = () => {
-  console.log('clear all');
   Array.from(sidebarContents).forEach(c => {
     c.style.display = 'none';
   });

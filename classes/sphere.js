@@ -6,8 +6,6 @@ class Sphere {
     this.label = 'Rotate';
 
     this.rotation = 0;
-
-    console.log(this.pos);
   }
 
   intersectsGeom(x, y, highlight) {

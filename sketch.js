@@ -148,7 +148,6 @@ setup = () => {
 };
 
 reset = () => {
-  console.log('reset');
   canvas = createCanvas(windowWidth, windowHeight);
 
   // translate(-width / 2, -height / 2);
@@ -215,7 +214,6 @@ reset = () => {
   };
 
   positions = [menuItem1, menuItem2, menuItem3, menuItem4];
-  console.log(positions);
 
   menuItems.forEach((item, i) => {
     let { x, y } = positions[i];
@@ -294,7 +292,6 @@ draw = () => {
 
 mousePressed = evt => {
   if (document.querySelector('#sidebar').style.left !== '0px' || displayWidth > 600) {
-    console.log('allowed');
     if (orb.intersectsGeom(mouseX, mouseY, true)) {
       shouldAnimate = new SmoothAnimation();
 
