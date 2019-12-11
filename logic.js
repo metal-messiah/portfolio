@@ -62,8 +62,8 @@ Array.from(tabs).forEach(tab => {
   tab.addEventListener('touchstart', () => setSidebarContent(tab.dataset.tag));
 });
 
-window.onload(() => {
+window.onload = () => {
   if (window.innerWidth >= 1400) {
-    openSidebar();
+    setSidebarContent('bio');
   }
-});
+};
