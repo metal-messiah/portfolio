@@ -38,7 +38,7 @@ let menuTags = [
     stack: 'HTML5 | P5.js | CSS'
   },
   {
-    name: 'Google Drive Podcast RSS Generator',
+    name: 'DriveRSS',
     url: 'https://chunks-podcast.herokuapp.com/',
     metadata: `Converts and streams Google Drive directories of audio files for RSS podcast feeds"`,
     stack: `NodeJS | RSS | Google Drive API`
