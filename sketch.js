@@ -38,10 +38,10 @@ let menuTags = [
     stack: 'HTML5 | P5.js | CSS'
   },
   {
-    name: 'JopeBot',
-    url: 'https://jopebot-web-beta.herokuapp.com/',
-    metadata: `A (beta) Twitch.tv integration app.  Login with "jtmmtest" | "s0ftware_d3m0!"`,
-    stack: `NodeJs + Express | PostgreSQL | Angular 6`
+    name: 'Google Drive Podcast RSS Generator',
+    url: 'https://chunks-podcast.herokuapp.com/',
+    metadata: `Converts and streams Google Drive directories of audio files for RSS podcast feeds"`,
+    stack: `NodeJS | RSS | Google Drive API`
   },
   {
     name: 'HobbyPocket',
