@@ -37,11 +37,17 @@ let menuTags = [
     metadata: `A pure HTML 5 game featuring built on a custom JavaScript physics engine.`,
     stack: 'HTML5 | P5.js | CSS'
   },
+  // {
+  //   name: 'DriveRSS',
+  //   url: 'https://chunks-podcast.herokuapp.com/',
+  //   metadata: `Converts and streams Google Drive directories of audio files for RSS podcast feeds`,
+  //   stack: `NodeJS | RSS | Google Drive API`
+  // },
   {
-    name: 'DriveRSS',
-    url: 'https://chunks-podcast.herokuapp.com/',
-    metadata: `Converts and streams Google Drive directories of audio files for RSS podcast feeds`,
-    stack: `NodeJS | RSS | Google Drive API`
+    name: 'DownBeat',
+    url: 'https://metal-messiah.github.io/visualizer-game/',
+    metadata: `Uses the amplitude and band analysis of any music file to generate visualizations and game obstacles on the fly.`,
+    stack: `ES6 | P5.js`
   },
   {
     name: 'HobbyPocket',
